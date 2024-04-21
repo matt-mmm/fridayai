@@ -10,6 +10,8 @@ def get_response(text):
         {"role": "system", "content": "You are a helpful assistant."},
         {"role": "user", "content": text},
     ])
+    return response.choices[0].message.content
+
 
 
 
