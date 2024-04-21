@@ -12,6 +12,11 @@ def get_response(text):
     ])
     return response.choices[0].message.content
 
+def speak(text):
+    tts = gTTS(text=text, lang='en')
+    filename = 'response.mp3'
+
+
 
 
 
