@@ -14,6 +14,7 @@ This is an experimental project created by Matthew Manganillo '25 and Ashley Nie
 - openai [DOCUMENTATION](https://platform.openai.com/docs/libraries)
 - os [DOCUMENTATION](https://docs.python.org/3/library/os.html)
 - SpeechRecognition [DOCUMENTATION](https://pypi.org/project/SpeechRecognition/)
+- playsound [DOCUMENTATION](https://pypi.org/project/playsound/)
 
 ## How to use Friday
 
