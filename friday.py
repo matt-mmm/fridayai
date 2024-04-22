@@ -46,3 +46,22 @@ def handle_command(r, micinput):
     except Exception as e:
         print("Error recognizing command: " + str(e))
 
+def get_response(text):
+    response = client.chat.completions.create(model="gpt-4-turbo-2024-04-09",
+    messages=[
+        {"role": "system", "content": "You are a helpful assistant."},
+        {"role": "user", "content": text},
+    ])
+    return response.choices[0].message.content
+
+def speak(text):
+    tts = gTTS(text=text, lang='en')
+    filename = 'response.mp3'
+    tts.save(filename)
+    playsound.playsound(filename)
+    os.remove(filename)
+
+
+
+
+
