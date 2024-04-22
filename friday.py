@@ -11,3 +11,24 @@ client = OpenAI(api_key='your api key here')
 #initializing speech recognition recognizer
 r = sr.Recognizer()
 
+#method to listen for key word (you can change to whatever you want to fit your needs)
+def listen_for_key_word(r, key_word='friday'):
+    #prompts user for key word
+    print("Awaiting key word...")
+    with sr.Microphone() as micinput:
+        #while loop to listen using system mic and if key word is recognized to listen to the prompt
+        while True:  
+            audio = r.listen(micinput)
+            try:
+                text = r.recognize_google(audio).lower()
+                if key_word in text:  
+                    print("Wake word authorized, listening for prompt.")
+                    #helper handle_command function
+                    return handle_command(r, micinput)
+            #base error handling
+            except Exception as e:
+                print("Error : " + str(e))
+
+#method to parse command and prep to utilize model
+def handle_command(r, micinput):
+
