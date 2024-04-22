@@ -46,19 +46,27 @@ def handle_command(r, micinput):
     except Exception as e:
         print("Error recognizing command: " + str(e))
 
+#method to get response to text from model
 def get_response(text):
+    #you can replace the model with whatever you want, you can see the list of models in OpenAI README
     response = client.chat.completions.create(model="gpt-4-turbo-2024-04-09",
     messages=[
         {"role": "system", "content": "You are a helpful assistant."},
         {"role": "user", "content": text},
     ])
+    #return model response to text
     return response.choices[0].message.content
 
+#method to create, play and delete audio file with response given by model
 def speak(text):
+    #utilizes Google text to speech package, can choose what language you want
     tts = gTTS(text=text, lang='en')
     filename = 'response.mp3'
+    #saving audio file
     tts.save(filename)
+    #playing audio file
     playsound.playsound(filename)
+    #deleting audio file
     os.remove(filename)
 
 
