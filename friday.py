@@ -69,6 +69,19 @@ def speak(text):
     #deleting audio file
     os.remove(filename)
 
+#main method that executes helper functions
+if __name__ == "__main__":
+    while True:
+        #listening for keyword
+        text = listen_for_key_word(r)
+        #if no text within 10 seconds, break
+        if text is None:  
+            break  
+        #if text is given, run helper functions
+        if text:
+            response = get_response(text)
+            speak(response)    
+
 
 
 
