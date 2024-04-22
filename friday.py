@@ -31,4 +31,18 @@ def listen_for_key_word(r, key_word='friday'):
 
 #method to parse command and prep to utilize model
 def handle_command(r, micinput):
+    #defines audio
+    audio = r.listen(micinput)  
+    #takes in your prompt from system mic, exports as text to be used in model
+    try:
+        prompt = r.recognize_google(audio)
+        print(f"You said: {prompt}")
+        #kill-switch: if the phrase "rudolph" is said, the assistant shuts down
+        if prompt.lower() == "rudolph":  
+            print("Shutting down, goodbye!")
+            return None 
+        return prompt
+    #basic error handling
+    except Exception as e:
+        print("Error recognizing command: " + str(e))
 
